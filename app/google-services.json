@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "427058646421",
+    "project_id": "wineapp-cbacc",
+    "storage_bucket": "wineapp-cbacc.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:427058646421:android:9caa4e85c42cbe2e203a9c",
+        "android_client_info": {
+          "package_name": "com.devsesi.wineapp"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBLBR32z-hX19dr_ZMyOggyR1mnBY6fNcs"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

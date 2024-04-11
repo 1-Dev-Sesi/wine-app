@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".HomeActivity">
+
+    <LinearLayout
+        android:layout_width="409dp"
+        android:layout_height="729dp"
+        android:orientation="vertical"
+        android:gravity="center_horizontal"
+        android:padding="40px"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <LinearLayout
+            android:id="@+id/logoutLayout"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center">
+
+            <TextView
+                android:id="@+id/textViewLoggedAs"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="16dp"
+                android:gravity="center_horizontal"
+                android:paddingTop="16dp"
+                android:paddingBottom="16dp"
+                android:text="Logged as: "
+                android:textSize="18sp" />
+
+            <Button
+                android:id="@+id/buttonLogout"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Logout" />
+        </LinearLayout>
+
+        <Button
+            android:id="@+id/buttonPageCargo1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Cargo 1" />
+
+        <Button
+            android:id="@+id/buttonPageCargo2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Cargo 2" />
+
+        <Button
+            android:id="@+id/buttonPageCargo3"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Cargo 3" />
+    </LinearLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
