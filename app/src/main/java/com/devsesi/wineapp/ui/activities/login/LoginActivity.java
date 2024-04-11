@@ -1,4 +1,4 @@
-package com.devsesi.wineapp.ui.activities;
+package com.devsesi.wineapp.ui.activities.login;
 
 import static com.devsesi.wineapp.ui.utils.SharedPreferencesUtils.saveCredentials;
 import static com.devsesi.wineapp.ui.utils.SharedPreferencesUtils.saveUserRoles;
@@ -6,9 +6,7 @@ import static com.devsesi.wineapp.ui.utils.SharedPreferencesUtils.saveUserRoles;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.content.Context;
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -16,6 +14,7 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import com.devsesi.wineapp.R;
+import com.devsesi.wineapp.ui.activities.home.HomeActivity;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.firestore.DocumentSnapshot;

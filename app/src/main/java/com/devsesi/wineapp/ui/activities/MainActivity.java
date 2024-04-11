@@ -14,6 +14,9 @@ import android.view.View;
 import android.widget.Button;
 
 import com.devsesi.wineapp.R;
+import com.devsesi.wineapp.ui.activities.home.HomeActivity;
+import com.devsesi.wineapp.ui.activities.login.LoginActivity;
+import com.devsesi.wineapp.ui.activities.login.RegisterActivity;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.firestore.DocumentSnapshot;

@@ -1,11 +1,9 @@
-package com.devsesi.wineapp.ui.activities;
+package com.devsesi.wineapp.ui.activities.login;
 
 import static com.devsesi.wineapp.ui.utils.SharedPreferencesUtils.saveCredentials;
 import static com.devsesi.wineapp.ui.utils.SharedPreferencesUtils.saveUserRoles;
 
-import android.content.Context;
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -24,6 +22,7 @@ import androidx.core.view.WindowInsetsCompat;
 
 import com.devsesi.wineapp.R;
 import com.devsesi.wineapp.data.model.User;
+import com.devsesi.wineapp.ui.activities.home.HomeActivity;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.firestore.DocumentSnapshot;

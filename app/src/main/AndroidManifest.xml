@@ -13,13 +13,19 @@
         android:theme="@style/Theme.WineApp"
         tools:targetApi="31">
         <activity
-            android:name=".ui.activities.HomeActivity"
+            android:name=".ui.activities.pages.role3.Role3Activity"
             android:exported="false" />
         <activity
-            android:name=".ui.activities.RegisterActivity"
+            android:name=".ui.activities.pages.role2.Role2Activity"
             android:exported="false" />
         <activity
-            android:name=".ui.activities.LoginActivity"
+            android:name=".ui.activities.home.HomeActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.activities.login.RegisterActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.activities.login.LoginActivity"
             android:exported="false" />
         <activity
             android:name=".ui.activities.MainActivity"
@@ -30,6 +36,9 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity
+            android:name=".ui.activities.pages.role1.Role1Activity"
+            android:exported="false" />
     </application>
 
 </manifest>

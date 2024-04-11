@@ -1,12 +1,10 @@
-package com.devsesi.wineapp.ui.activities;
+package com.devsesi.wineapp.ui.activities.home;
 
 import static com.devsesi.wineapp.ui.utils.SharedPreferencesUtils.clearSavedCredentials;
 import static com.devsesi.wineapp.ui.utils.SharedPreferencesUtils.getSavedUsername;
 import static com.devsesi.wineapp.ui.utils.SharedPreferencesUtils.getUserRoles;
 
-import android.content.Context;
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -19,8 +17,11 @@ import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
 import com.devsesi.wineapp.R;
+import com.devsesi.wineapp.ui.activities.MainActivity;
+import com.devsesi.wineapp.ui.activities.pages.role1.Role1Activity;
+import com.devsesi.wineapp.ui.activities.pages.role2.Role2Activity;
+import com.devsesi.wineapp.ui.activities.pages.role3.Role3Activity;
 
-import java.util.Arrays;
 import java.util.List;
 
 public class HomeActivity extends AppCompatActivity {
@@ -64,5 +65,29 @@ public class HomeActivity extends AppCompatActivity {
         buttonCargo1.setEnabled(userRoles.contains("Cargo 1"));
         buttonCargo2.setEnabled(userRoles.contains("Cargo 2"));
         buttonCargo3.setEnabled(userRoles.contains("Cargo 3"));
+
+        buttonCargo1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(HomeActivity.this, Role1Activity.class);
+                startActivity(intent);
+            }
+        });
+
+        buttonCargo2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(HomeActivity.this, Role2Activity.class);
+                startActivity(intent);
+            }
+        });
+
+        buttonCargo3.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(HomeActivity.this, Role3Activity.class);
+                startActivity(intent);
+            }
+        });
     }
 }
