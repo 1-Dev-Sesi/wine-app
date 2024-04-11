@@ -1,4 +1,7 @@
-package com.devsesi.wineapp;
+package com.devsesi.wineapp.ui.activities;
+
+import static com.devsesi.wineapp.ui.utils.SharedPreferencesUtils.saveCredentials;
+import static com.devsesi.wineapp.ui.utils.SharedPreferencesUtils.saveUserRoles;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -12,6 +15,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.devsesi.wineapp.R;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.firestore.DocumentSnapshot;
@@ -20,27 +24,6 @@ import com.google.firebase.firestore.FirebaseFirestore;
 import java.util.List;
 
 public class LoginActivity extends AppCompatActivity {
-    private void saveCredentials(String username, String password) {
-        SharedPreferences sharedPreferences = getSharedPreferences("user_credentials", Context.MODE_PRIVATE);
-        SharedPreferences.Editor editor = sharedPreferences.edit();
-        editor.putString("username", username);
-        editor.putString("password", password);
-        editor.apply();
-    }
-
-    private void saveUserRoles(List<String> userRoles) {
-        SharedPreferences sharedPreferences = getSharedPreferences("user_credentials", Context.MODE_PRIVATE);
-        SharedPreferences.Editor editor = sharedPreferences.edit();
-        StringBuilder rolesStringBuilder = new StringBuilder();
-        for (String role : userRoles) {
-            rolesStringBuilder.append(role).append(",");
-        }
-
-        String rolesString = rolesStringBuilder.deleteCharAt(rolesStringBuilder.length() - 1).toString();
-        editor.putString("user_roles", rolesString);
-        editor.apply();
-    }
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -71,8 +54,8 @@ public class LoginActivity extends AppCompatActivity {
                                                 List<String> userRoles = (List<String>) document.get("roles");
 
                                                 Toast.makeText(LoginActivity.this, "Login bem-sucedido!", Toast.LENGTH_SHORT).show();
-                                                saveCredentials(username, password);
-                                                saveUserRoles(userRoles);
+                                                saveCredentials(LoginActivity.this, username, password);
+                                                saveUserRoles(LoginActivity.this, userRoles);
 
                                                 Intent intent = new Intent(LoginActivity.this, HomeActivity.class);
                                                 startActivity(intent);

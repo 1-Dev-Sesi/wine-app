@@ -1,4 +1,4 @@
-package com.devsesi.wineapp;
+package com.devsesi.wineapp.data.model;
 
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.IgnoreExtraProperties;

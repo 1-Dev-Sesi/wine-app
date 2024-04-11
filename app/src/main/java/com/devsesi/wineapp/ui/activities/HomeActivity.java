@@ -1,4 +1,8 @@
-package com.devsesi.wineapp;
+package com.devsesi.wineapp.ui.activities;
+
+import static com.devsesi.wineapp.ui.utils.SharedPreferencesUtils.clearSavedCredentials;
+import static com.devsesi.wineapp.ui.utils.SharedPreferencesUtils.getSavedUsername;
+import static com.devsesi.wineapp.ui.utils.SharedPreferencesUtils.getUserRoles;
 
 import android.content.Context;
 import android.content.Intent;
@@ -14,27 +18,12 @@ import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
+import com.devsesi.wineapp.R;
+
 import java.util.Arrays;
 import java.util.List;
 
 public class HomeActivity extends AppCompatActivity {
-    private String getSavedUsername() {
-        SharedPreferences sharedPreferences = getSharedPreferences("user_credentials", Context.MODE_PRIVATE);
-        return sharedPreferences.getString("username", "");
-    }
-    private List<String> getUserRoles() {
-        SharedPreferences sharedPreferences = getSharedPreferences("user_credentials", Context.MODE_PRIVATE);
-        String userRolesString = sharedPreferences.getString("user_roles", "");
-
-        return Arrays.asList(userRolesString.split(","));
-    }
-    private void clearSavedCredentials() {
-        SharedPreferences sharedPreferences = getSharedPreferences("user_credentials", Context.MODE_PRIVATE);
-        SharedPreferences.Editor editor = sharedPreferences.edit();
-        editor.clear();
-        editor.apply();
-    }
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -46,20 +35,19 @@ public class HomeActivity extends AppCompatActivity {
             return insets;
         });
 
-        String username = getSavedUsername();
+        String username = getSavedUsername(HomeActivity.this);
 
-        // Atualizar o TextView com o nome de usuário
         TextView textViewLoggedAs = findViewById(R.id.textViewLoggedAs);
         textViewLoggedAs.setText("Logged as: " + username);
 
-        List<String> userRoles = getUserRoles();
+        List<String> userRoles = getUserRoles(HomeActivity.this);
         enableButtonsBasedOnUserRoles(userRoles);
 
         Button buttonLogout = findViewById(R.id.buttonLogout);
         buttonLogout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                clearSavedCredentials();
+                clearSavedCredentials(HomeActivity.this);
 
                 Intent intent = new Intent(HomeActivity.this, MainActivity.class);
                 startActivity(intent);

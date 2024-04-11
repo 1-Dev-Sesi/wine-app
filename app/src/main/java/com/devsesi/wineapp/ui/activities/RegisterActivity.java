@@ -1,4 +1,7 @@
-package com.devsesi.wineapp;
+package com.devsesi.wineapp.ui.activities;
+
+import static com.devsesi.wineapp.ui.utils.SharedPreferencesUtils.saveCredentials;
+import static com.devsesi.wineapp.ui.utils.SharedPreferencesUtils.saveUserRoles;
 
 import android.content.Context;
 import android.content.Intent;
@@ -10,7 +13,6 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.MultiAutoCompleteTextView;
-import android.widget.Spinner;
 import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
@@ -20,42 +22,18 @@ import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
+import com.devsesi.wineapp.R;
+import com.devsesi.wineapp.data.model.User;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
-import com.google.android.material.textfield.TextInputLayout;
-import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
-import com.google.firebase.firestore.QuerySnapshot;
 
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 public class RegisterActivity extends AppCompatActivity {
-    private void saveCredentials(String username, String password) {
-        SharedPreferences sharedPreferences = getSharedPreferences("user_credentials", Context.MODE_PRIVATE);
-        SharedPreferences.Editor editor = sharedPreferences.edit();
-        editor.putString("username", username);
-        editor.putString("password", password);
-        editor.apply();
-    }
-
-    private void saveUserRoles(List<String> userRoles) {
-        SharedPreferences sharedPreferences = getSharedPreferences("user_credentials", Context.MODE_PRIVATE);
-        SharedPreferences.Editor editor = sharedPreferences.edit();
-        StringBuilder rolesStringBuilder = new StringBuilder();
-        for (String role : userRoles) {
-            rolesStringBuilder.append(role).append(",");
-        }
-
-        String rolesString = rolesStringBuilder.deleteCharAt(rolesStringBuilder.length() - 1).toString();
-        editor.putString("user_roles", rolesString);
-        editor.apply();
-    }
-
     private FirebaseFirestore db;
 
     @Override
@@ -119,12 +97,8 @@ public class RegisterActivity extends AppCompatActivity {
                                                         public void onComplete(@NonNull Task<Void> task) {
                                                             if (task.isSuccessful()) {
                                                                 Toast.makeText(RegisterActivity.this, "Usuário registrado com sucesso!", Toast.LENGTH_SHORT).show();
-                                                                Log.d("Registro", "Usuário registrado com sucesso!");
-
-                                                                List<String> userRoles = (List<String>) document.get("roles");
-
-                                                                saveCredentials(username, password);
-                                                                saveUserRoles(userRoles);
+                                                                saveCredentials(RegisterActivity.this, username, password);
+                                                                saveUserRoles(RegisterActivity.this, roles);
 
                                                                 Intent intent = new Intent(RegisterActivity.this, HomeActivity.class);
                                                                 startActivity(intent);
