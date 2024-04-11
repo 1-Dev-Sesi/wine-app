@@ -9,6 +9,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.MultiAutoCompleteTextView;
 import android.widget.Toast;
@@ -52,6 +53,7 @@ public class RegisterActivity extends AppCompatActivity {
         Button buttonRegister = findViewById(R.id.buttonRegisterPage);
         EditText editTextUser = findViewById(R.id.editTextUsernameRegister);
         EditText editTextPassword = findViewById(R.id.editTextPasswordRegister);
+        CheckBox checkBoxSaveRegister = findViewById(R.id.checkBoxSaveRegister);
 
         MultiAutoCompleteTextView multiAutoCompleteTextViewRoles = findViewById(R.id.multiAutoCompleteTextViewRoles);
 
@@ -96,7 +98,12 @@ public class RegisterActivity extends AppCompatActivity {
                                                         public void onComplete(@NonNull Task<Void> task) {
                                                             if (task.isSuccessful()) {
                                                                 Toast.makeText(RegisterActivity.this, "Usuário registrado com sucesso!", Toast.LENGTH_SHORT).show();
-                                                                saveCredentials(RegisterActivity.this, username, password);
+
+                                                                if (checkBoxSaveRegister.isChecked()) {
+                                                                    saveCredentials(RegisterActivity.this, username, password);
+                                                                } else {
+                                                                    saveCredentials(RegisterActivity.this, username, "");
+                                                                }
                                                                 saveUserRoles(RegisterActivity.this, roles);
 
                                                                 Intent intent = new Intent(RegisterActivity.this, HomeActivity.class);

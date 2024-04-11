@@ -41,6 +41,12 @@
             android:completionThreshold="0"
         android:inputType="text" />
 
+        <CheckBox
+            android:id="@+id/checkBoxSaveRegister"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Salvar senha" />
+
         <Button
             android:id="@+id/buttonRegisterPage"
             android:layout_width="match_parent"

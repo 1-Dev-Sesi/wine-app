@@ -10,6 +10,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.Toast;
 
@@ -31,6 +32,7 @@ public class LoginActivity extends AppCompatActivity {
         Button buttonLogin = findViewById(R.id.buttonLoginPage);
         EditText editTextUser = findViewById(R.id.editTextUsernameLogin);
         EditText editTextPassword = findViewById(R.id.editTextPasswordLogin);
+        CheckBox checkBoxSaveLogin = findViewById(R.id.checkBoxSaveLogin);
 
         buttonLogin.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -51,9 +53,13 @@ public class LoginActivity extends AppCompatActivity {
                                             String storedPassword = document.getString("password");
                                             if (storedPassword.equals(password)) {
                                                 List<String> userRoles = (List<String>) document.get("roles");
-
                                                 Toast.makeText(LoginActivity.this, "Login bem-sucedido!", Toast.LENGTH_SHORT).show();
-                                                saveCredentials(LoginActivity.this, username, password);
+
+                                                if (checkBoxSaveLogin.isChecked()) {
+                                                    saveCredentials(LoginActivity.this, username, password);
+                                                } else {
+                                                    saveCredentials(LoginActivity.this, username, "");
+                                                }
                                                 saveUserRoles(LoginActivity.this, userRoles);
 
                                                 Intent intent = new Intent(LoginActivity.this, HomeActivity.class);
